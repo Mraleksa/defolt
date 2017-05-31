@@ -28,8 +28,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 var res = '{"id":"'+data.getJSON().data.id+'","datePublished":"'+data.getJSON().data.datePublished+'","cpv":"'+data.getJSON().data.classification.id+'","name":"'+data.getJSON().data.procuringEntity.identifier.id+'", "amount":'+data.getJSON().data.budget.amount+', "currency":"'+data.getJSON().data.budget.currency+'", "procurementMethod":"'+data.getJSON().data.tender.procurementMethod+'","procurementMethodType":"'+data.getJSON().data.tender.procurementMethodType+'","startDate":"'+data.getJSON().data.tender.tenderPeriod.startDate+'"},'
 					//console.log(res);
 
-					fs.appendFile("plans5.json", res);
-				
+					console.log(res)
 					})
 					.catch(function  (error) {
 						console.log("error_detale")
