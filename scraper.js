@@ -31,7 +31,7 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 var res = '{"id":"'+data.getJSON().data.id+'","datePublished":"'+data.getJSON().data.datePublished+'","cpv":"'+data.getJSON().data.classification.id+'","name":"'+data.getJSON().data.procuringEntity.identifier.id+'", "amount":'+data.getJSON().data.budget.amount+', "currency":"'+data.getJSON().data.budget.currency+'", "procurementMethod":"'+data.getJSON().data.tender.procurementMethod+'","procurementMethodType":"'+data.getJSON().data.tender.procurementMethodType+'","startDate":"'+data.getJSON().data.tender.tenderPeriod.startDate+'"},'
 					//console.log(res);
 
-					
+				
 					
 db.serialize(function() {
 
@@ -40,7 +40,7 @@ db.serialize(function() {
 						
 						 // Insert a new record
   var statement = db.prepare("INSERT INTO data(title) VALUES (?)");
-  statement.run( res);
+  statement.run( JSON.parse(res));
   statement.finalize();
 });
 					})
