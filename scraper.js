@@ -6,7 +6,7 @@ var db = new sqlite3.Database("data.sqlite");
 
 
 	
-var currentCount =  "2017-05-12T13:53:03.472019+03:00"
+var currentCount =  "2017-05-15T13:53:03.472019+03:00"
 var p=0; var p2=0;
    
    
@@ -60,7 +60,7 @@ db.serialize(function() {
 				console.log(p2)
 			setTimeout(function() {
 			
-				if (p2 < 1) {
+				if (p2 < 15) {
 					piv ();
 				}
 				else {console.log("STOP")}
