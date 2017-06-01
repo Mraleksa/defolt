@@ -36,12 +36,16 @@ var res = '{"id":"'+data.getJSON().data.id+'","datePublished":"'+data.getJSON().
 db.serialize(function() {
 
   // Create new table
-  db.run("CREATE TABLE IF NOT EXISTS data (title TEXT)");
-						
+ //db.run("CREATE TABLE IF NOT EXISTS data (title TEXT)");
+ db.run("CREATE TABLE IF NOT EXISTS data (title INT,title2 INT)");						
 						 // Insert a new record
-  var statement = db.prepare("INSERT INTO data(title) VALUES (?)");
-  statement.run( res);
+  //var statement = db.prepare("INSERT INTO data(title) VALUES (?)");
+  var statement = db.prepare("INSERT INTO data VALUES (?,?)");	
+	
+ // statement.run( res);
+  statement.run(res,Math.round(Math.random()*100));	
   statement.finalize();
+	
 });
 					})
 					.catch(function  (error) {
