@@ -45,13 +45,13 @@ var res = '{
 db.serialize(function() {
 
   // Create new table
-  db.run("CREATE TABLE IF NOT EXISTS data (name TEXT,value INT)");
+  db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,datePublished TEXT,cpv TEXT,amount INT)");
 
   
   // Insert a new record
-  var statement = db.prepare("INSERT INTO data VALUES (?,?)");
-  var res = Math.round(Math.random()*100);
-  if(res>60){statement.run("груша яблоко",res);}
+  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?)");
+
+statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJSON().data.classification.id,data.getJSON().data.budget.amount);
   //else none;
   
   statement.finalize();
