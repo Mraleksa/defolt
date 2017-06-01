@@ -37,7 +37,7 @@ db.serialize(function() {
 
   // Create new table
  //db.run("CREATE TABLE IF NOT EXISTS data (title TEXT)");
- db.run("CREATE TABLE IF NOT EXISTS data (title INT,title2 INT)");						
+ db.run("CREATE TABLE IF NOT EXISTS data (title TEXT,title2 INT)");						
 						 // Insert a new record
   //var statement = db.prepare("INSERT INTO data(title) VALUES (?)");
   var statement = db.prepare("INSERT INTO data VALUES (?,?)");	
@@ -56,7 +56,7 @@ db.serialize(function() {
 		
 		})
 		.then(function () {	
-		if (p<10){piv ();}		
+		if (p<2){piv ();}		
 		else {
 			console.log("stop")
 				p=0;
