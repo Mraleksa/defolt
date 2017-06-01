@@ -28,9 +28,8 @@ client.request({url: 'https://public.api.openprocurement.org/api/2.3/plans?offse
 			dataset.forEach(function(item) {
 				client.request({url: 'https://public.api.openprocurement.org/api/0/plans/'+item.id})
 					.then(function (data) {
-var res = '{"id":"'+data.getJSON().data.id+'","datePublished":"'+data.getJSON().data.datePublished+'","cpv":"'+data.getJSON().data.classification.id+'","name":"'+data.getJSON().data.procuringEntity.identifier.id+'", "amount":'+data.getJSON().data.budget.amount+', "currency":"'+data.getJSON().data.budget.currency+'", "procurementMethod":"'+data.getJSON().data.tender.procurementMethod+'","procurementMethodType":"'+data.getJSON().data.tender.procurementMethodType+'","startDate":"'+data.getJSON().data.tender.tenderPeriod.startDate+'"},'
-					//console.log(res);
-
+//var res = '{"id":"'+data.getJSON().data.id+'","datePublished":"'+data.getJSON().data.datePublished+'","cpv":"'+data.getJSON().data.classification.id+'","name":"'+data.getJSON().data.procuringEntity.identifier.id+'", "amount":'+data.getJSON().data.budget.amount+', "currency":"'+data.getJSON().data.budget.currency+'", "procurementMethod":"'+data.getJSON().data.tender.procurementMethod+'","procurementMethodType":"'+data.getJSON().data.tender.procurementMethodType+'","startDate":"'+data.getJSON().data.tender.tenderPeriod.startDate+'"},'
+					
 				
 					
 db.serialize(function() {
@@ -43,7 +42,7 @@ db.serialize(function() {
   var statement = db.prepare("INSERT INTO data VALUES (?,?)");	
 	
  // statement.run( res);
-  statement.run(res,Math.round(Math.random()*100));	
+  statement.run(data.getJSON().data.id,Math.round(Math.random()*100));	
   statement.finalize();
 	
 });
