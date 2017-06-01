@@ -45,17 +45,18 @@ var res = '{
 db.serialize(function() {
 
   // Create new table
- //db.run("CREATE TABLE IF NOT EXISTS data (id TEXT)");
- db.run("CREATE TABLE IF NOT EXISTS data (id TEXT,datePublished TEXT,cpv TEXT,name TEXT,amount INT,currency TEXT,procurementMethod TEXT,procurementMethodType TEXT,startDate TEXT)");						
-						 // Insert a new record
-  //var statement = db.prepare("INSERT INTO data(id) VALUES (?)");
-  var statement = db.prepare("INSERT INTO data VALUES (?,?,?,?,?,?,?,?,?)");	
-	
- // statement.run( res);
-  statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJSON().data.classification.id,data.getJSON().data.procuringEntity.identifier.id,data.getJSON().data.budget.amount,data.getJSON().data.budget.currency,data.getJSON().data.tender.procurementMethod,data.getJSON().data.tender.procurementMethodType,data.getJSON().data.tender.tenderPeriod.startDate);	
+  db.run("CREATE TABLE IF NOT EXISTS data (name TEXT,value INT)");
+
+  
+  // Insert a new record
+  var statement = db.prepare("INSERT INTO data VALUES (?,?)");
+  var res = Math.round(Math.random()*100);
+  if(res>60){statement.run("груша яблоко",res);}
+  //else none;
+  
   statement.finalize();
-	
 });
+
 					})
 					.catch(function  (error) {
 						console.log("error_detale")
