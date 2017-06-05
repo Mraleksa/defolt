@@ -53,7 +53,7 @@ db.serialize(function() {
 
 statement.run(data.getJSON().data.id,data.getJSON().data.datePublished,data.getJSON().data.classification.id,data.getJSON().data.budget.amount);
   //else none;
-   console.log(item.dateModified)
+   //console.log(item.dateModified)
   statement.finalize();
 });
 
